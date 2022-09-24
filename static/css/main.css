@@ -71,7 +71,7 @@
 		appearance: none;
 	}
 
-/* Google Calendar Responsive */
+	/* Google Calendar Responsive */
 	.responsiveCal {
 		position: relative;
 		padding-bottom: 50%;
@@ -133,7 +133,7 @@
 		-ms-transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
 		transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
 		border-bottom: dotted 1px;
-		color: #e89980;
+		color: #666;
 		text-decoration: none;
 	}
 
@@ -406,8 +406,8 @@
 		input[type="email"]:focus,
 		select:focus,
 		textarea:focus {
-			border-color: #e89980;
-			box-shadow: 0 0 0 2px #e89980;
+			border-color: #666;
+			box-shadow: 0 0 0 2px #666;
 		}
 
 	select {
@@ -512,8 +512,8 @@
 
 		input[type="checkbox"]:focus + label:before,
 		input[type="radio"]:focus + label:before {
-			border-color: #e89980;
-			box-shadow: 0 0 0 1px #e89980;
+			border-color: #666;
+			box-shadow: 0 0 0 1px #666;
 		}
 
 	input[type="checkbox"] + label:before {
@@ -719,7 +719,7 @@
 			}
 
 			.icon.major.accent2 {
-				background: #e89980;
+				background: #666;
 				color: #ffffff;
 			}
 
@@ -1145,7 +1145,7 @@
 		input[type="reset"].primary,
 		input[type="button"].primary,
 		.button.primary {
-			background-color: #e89980;
+			background-color: #666;
 			color: #ffffff !important;
 		}
 
@@ -1426,7 +1426,7 @@
 			}
 
 			.dropotron li.active > a, .dropotron li.active > span, .dropotron li:hover > a, .dropotron li:hover > span {
-				background: #e89980;
+				background: #666;
 				color: #ffffff;
 			}
 
@@ -1460,10 +1460,10 @@
 	#banner {
 		background-attachment: scroll, fixed;
 		background-color: #666;
-		background-image: url("/static/images/background.jpg");
+		background-image: url("../images/background.jpg");
 		background-position: top left, center center;
 		background-repeat: repeat, no-repeat;
-		background-size: auto, cover;
+		background-size: cover;
 		color: #fff;
 		padding: 12em 0 20em 0;
 		text-align: center;

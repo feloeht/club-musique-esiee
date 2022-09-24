@@ -1,0 +1,16 @@
+version: '3.3'
+services:
+  web:
+    build: .
+    environment:
+      MAIL_DEFAULT_SENDER:
+      MAIL_PORT:
+      MAIL_USE_SSL:
+      MAIL_USE_TLS:
+      MAIL_RECIPIENT:
+      MAIL_SERVER:
+      RECAPTCHA_PRIVATE_KEY:
+      RECAPTCHA_PUBLIC_KEY:
+      RECAPTCHA_USE_SSL:
+    ports:
+      - 80:80
