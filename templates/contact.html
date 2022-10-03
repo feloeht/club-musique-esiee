@@ -1,57 +1,61 @@
 {% include "header.html" %}
-	<body class="is-preload">
-		<div id="page-wrapper">
 
-			<!-- Header -->
-				<header id="header">
-					{% include "nav.html" %}
-				</header>
-				
-			<!-- Main -->
-				<section id="main" class="container medium">
-					<header>
-						<h2>Nous Contacter</h2>
-						<p>Des questions ? Des suggestions ? C'est par ici !</p>
-					</header>
-					{% if error %}
-						<div class="flash">{{ error }}</div>
-					{% endif %}
-					{% if success %}
-						<p>Votre message a bien été pris en compte.</p>
-						<p> Vous recevrez une réponse par mail bientot !</p>
-					{% else %}
-					<div class="box">
-						<form method="post" action="#">
-						{{ contact.csrf_token }}
-							<div class="row gtr-50 gtr-uniform">
-								<div class="col-6 col-12-mobilep">
-									{{ contact.nom(placeholder="Nom, Prénom *") }}
-									{% for message in contact.nom.errors %}
-										<div class="flash">{{ message }}</div>
-									{% endfor %}
-								</div>
-								<div class="col-6 col-12-mobilep">
-									{{ contact.email(placeholder="Email *") }}
-									{% for message in contact.email.errors %}
-										<div class="flash">{{ message }}</div>
-									{% endfor %}
-								</div>
-								<div class="col-12">
-									{{ contact.message(placeholder="Message, commentaire, demande...", rows="4") }}
-								</div>
-								<div class="col-12">
-									<ul class="actions special">
-										<li>{{ contact.recaptcha }}</li>
-									</ul>
-								</div>
-								<div class="col-12">
-									<ul class="actions special">
-										<li>{{ contact.envoyer(value="Envoyer") }}</li>
-									</ul>
-								</div>
-							</div>
-						</form>
-						{% endif %}
+	<body class="d-flex h-100 text-center text-white bg-dark">
+		<div class="container d-flex p-3 mx-auto flex-column">
+			<header class="mb-auto">
+				<div>
+				<a href="/" class="text-reset"><h3 class="float-md-start mb-0">Club Musique ESIEE PARIS</h3></a>
+				<nav class="nav nav-masthead justify-content-center float-md-end">
+					<a class="nav-link" href="/">Home</a>
+					<a class="nav-link" href="/planning">Planning</a>
+					<a class="nav-link" href="/reservation">Réservation</a>
+					<a class="nav-link active" aria-current="page" href="/contact">Contact</a>
+				</nav>
+				</div>
+			</header>
+			<main class="px-3">
+				<h1>Nous contacter</h1>
+				<p class="lead">Des questions ? Des suggestions ? C'est par ici !</p>
+			</main>
+			<div class="container w-50 pt-4">
+				{% if error %}
+					<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+						<symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+						<path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+						</symbol>
+					</svg>
+					{{ error|safe }}
+				{% endif %}
+				{% if success %}
+					<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+						<symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+						<path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+						</symbol>
+					</svg>
+					<div class="alert alert-primary d-flex align-items-center" role="alert">
+						<svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:"><use xlink:href="#info-fill"/></svg>
+						<div>Ta demande de contact a bien été enregistrée, on te répond au plus vite !</div>
 					</div>
-				</section>
+				{% else %}
+				<form class="row g-3" action="{{ url_for('contact') }}" method="post">
+					{{ contact.csrf_token }}
+					<div class="col-md-6">
+						{{ contact.nom(class="form-control", placeholder="Nom, Prénom *") }}
+					</div>
+					<div class="col-md-6">
+						{{ contact.email(class="form-control", placeholder="Email *") }}
+					</div>
+					<div class="col-12">
+						{{ contact.message(placeholder="Message...", rows="4", class="form-control") }}
+					</div>
+					<div class="col-12 d-flex justify-content-center pt-2">
+						{{ contact.recaptcha }}
+					</div>
+					<div class="col-12 pt-2">
+						{{ contact.envoyer(type="submit", class="btn btn-lg btn-primary", value="Envoyer") }}
+					</div>
+				</form>
+				{% endif %}
+			</div>
+
 {% include "footer.html" %}
