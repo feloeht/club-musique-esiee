@@ -1,25 +1,18 @@
 import os, traceback
+from config import Config
 from flask import Flask, render_template, request
 from flask_mail import Mail, Message
 from datetime import date
-from app.src.reservation import ResaForm
-from app.src.contact import ContactForm
 
 app = Flask(__name__)
 
-app.config['SECRET_KEY'] = os.urandom(32)
-app.config["MAIL_SERVER"] = os.environ.get('MAIL_SERVER')
-app.config["MAIL_PORT"] = os.environ.get('MAIL_PORT')
-app.config["MAIL_USE_SSL"] = os.environ.get('MAIL_USE_SSL')
-app.config["MAIL_USE_TLS"] = os.environ.get('MAIL_USE_TLS')
-app.config["MAIL_DEFAULT_SENDER"] = os.environ.get('MAIL_DEFAULT_SENDER')
-app.config["MAIL_RECIPIENT"] = os.environ.get('MAIL_RECIPIENT')
-app.config['RECAPTCHA_USE_SSL'] = os.environ.get('RECAPTCHA_USE_SSL')
-app.config['RECAPTCHA_PUBLIC_KEY'] = os.environ.get('RECAPTCHA_PUBLIC_KEY')
-app.config['RECAPTCHA_PRIVATE_KEY'] = os.environ.get('RECAPTCHA_PRIVATE_KEY')
-app.config['RECAPTCHA_OPTIONS'] = {'theme':'white'}
+app.secret_key = os.urandom(32)
+app.config.from_object("config.Config")
 
 mail = Mail(app)
+
+from app.src.reservation import ResaForm
+from app.src.contact import ContactForm
 
 @app.route("/")
 def index():
