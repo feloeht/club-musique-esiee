@@ -6,4 +6,6 @@ WORKDIR /app
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
-CMD python app.py
+EXPOSE 5000
+
+CMD ["python", "wsgi.py"]

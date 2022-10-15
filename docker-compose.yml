@@ -3,14 +3,14 @@ services:
   web:
     build: .
     environment:
-      MAIL_DEFAULT_SENDER:
-      MAIL_PORT:
-      MAIL_USE_SSL:
-      MAIL_USE_TLS:
-      MAIL_RECIPIENT:
-      MAIL_SERVER:
-      RECAPTCHA_PRIVATE_KEY:
-      RECAPTCHA_PUBLIC_KEY:
-      RECAPTCHA_USE_SSL:
+      - MAIL_DEFAULT_SENDER="YOUR_SERVER"
+      - MAIL_PORT="YOUR_PORT"
+      - MAIL_USE_SSL="True/False"
+      - MAIL_USE_TLS="True/False"
+      - MAIL_RECIPIENT="YOUR_USERNAME"
+      - MAIL_SERVER="YOUR_RECIPIENT"
+      - RECAPTCHA_USE_SSL="True/False"
+      - RECAPTCHA_PUBLIC_KEY=""
+      - RECAPTCHA_PRIVATE_KEY=""
     ports:
-      - 80:80
+      - "5000:5000"
