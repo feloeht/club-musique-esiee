@@ -8,14 +8,15 @@
 				<nav class="nav nav-masthead justify-content-center float-md-end">
 					<a class="nav-link" href="/">Home</a>
 					<a class="nav-link" href="/planning">Planning</a>
-					<a class="nav-link" href="/reservation">Réservation</a>
-					<a class="nav-link active" aria-current="page" href="/contact">Contact</a>
+					<a class="nav-link active" aria-current="page" href="/reservation">Réservation</a>
+					<a class="nav-link" href="/contact">Contact</a>
 				</nav>
 				</div>
 			</header>
 			<main class="px-3">
-				<h1>Nous contacter</h1>
-				<p class="lead">Des questions ? Des suggestions ? C'est par ici !</p>
+				<h1>Réservation du studio</h1>
+				<p class="lead">Tu es cotisant et tu souhaites réserver le studio ? C'est par ici !</p>
+				<p class="lead">Commence par vérifier que le studio soit bien disponible sur le <a class="link-light" href="/planning">Planning</a> avant de demander une réservation.</p>
 			</main>
 			<div class="container w-50 pt-4">
 				{% if error %}
@@ -32,27 +33,41 @@
 						<path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
 						</symbol>
 					</svg>
-					<div class="alert alert-primary d-flex align-items-center" role="alert">
+					<div class="alert alert-success d-flex align-items-center" role="alert">
 						<svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:"><use xlink:href="#info-fill"/></svg>
-						<div>Ta demande de contact a bien été enregistrée, on te répond au plus vite !</div>
+						<div>Ta demande de réservation a bien été enregistrée, on te répond au plus vite !</div>
 					</div>
 				{% else %}
-				<form class="row g-3" action="{{ url_for('contact') }}" method="post">
-					{{ contact.csrf_token }}
+				<form class="row g-3" action="{{ url_for('reservation') }}" method="post">
+					{{ form.csrf_token }}
 					<div class="col-md-6">
-						{{ contact.nom(class="form-control", placeholder="Nom, Prénom *") }}
+						{{ form.nom(class="form-control", placeholder="Nom, Prénom *") }}
 					</div>
 					<div class="col-md-6">
-						{{ contact.email(class="form-control", placeholder="Email *") }}
+						{{ form.email(class="form-control", placeholder="Email ESIEE *") }}
+					</div>
+					<div class="col-md-6">
+						{{ form.date(class="form-control") }}
+					</div>
+					<div class="col-md-6">
+						{{ form.nbpersonnes(class="form-select") }}
+					</div>
+					<div class="col-md-6">
+						<label for="start" class="form-label">Heure de début</label>
+						{{ form.heuredebut(id="heuredebut", class="form-control") }}
+					</div>
+					<div class="col-md-6">
+						<label for="end" class="form-label">Heure de fin</label>
+						{{ form.heurefin(id="heurefin", class="form-control") }}
 					</div>
 					<div class="col-12">
-						{{ contact.message(placeholder="Message...", rows="4", class="form-control") }}
+						{{ form.commentaire(placeholder="Message, commentaire, demande...", rows="2", class="form-control") }}
 					</div>
 					<div class="col-12 d-flex justify-content-center pt-2">
-						{{ contact.recaptcha }}
+						{{ form.recaptcha }}
 					</div>
 					<div class="col-12 pt-2">
-						{{ contact.envoyer(type="submit", class="btn btn-lg btn-primary", value="Envoyer") }}
+						{{ form.envoyer(type="submit", class="btn btn-lg btn-primary", value="Envoyer") }}
 					</div>
 				</form>
 				{% endif %}

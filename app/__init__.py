@@ -2,11 +2,10 @@ import os, traceback
 from flask import Flask, render_template, request
 from flask_mail import Mail, Message
 from datetime import date
-from reservation import ResaForm
-from contact import ContactForm
+from app.src.reservation import ResaForm
+from app.src.contact import ContactForm
 
 app = Flask(__name__)
-mail = Mail(app)
 
 app.config['SECRET_KEY'] = os.urandom(32)
 app.config["MAIL_SERVER"] = os.environ.get('MAIL_SERVER')
@@ -19,6 +18,7 @@ app.config['RECAPTCHA_USE_SSL'] = os.environ.get('RECAPTCHA_USE_SSL')
 app.config['RECAPTCHA_PUBLIC_KEY'] = os.environ.get('RECAPTCHA_PUBLIC_KEY')
 app.config['RECAPTCHA_PRIVATE_KEY'] = os.environ.get('RECAPTCHA_PRIVATE_KEY')
 app.config['RECAPTCHA_OPTIONS'] = {'theme':'white'}
+
 mail = Mail(app)
 
 @app.route("/")
@@ -111,6 +111,3 @@ def reservation():
 
     elif request.method == 'GET':
         return render_template('reservation.html', form=form)
-
-if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=8060)

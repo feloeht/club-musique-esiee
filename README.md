@@ -4,7 +4,7 @@ Site web et application de réservation du studio du Club Musique de l'ESIEE Par
 
 ## TODO
 - [X] Update python and base app
-- [] Review and harden flask app
+- [x] Review and harden flask app
 - [X] Update web app (jquery, bootstrap...)
 - [] Minors CSS fix
 
