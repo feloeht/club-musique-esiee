@@ -16,11 +16,11 @@ from app.src.contact import ContactForm
 
 @app.route("/")
 def index():
-        return render_template('index.html')
+    return render_template('index.html')
 
 @app.route("/planning")
 def planning():
-        return render_template('planning.html')
+    return render_template('planning.html')
 
 @app.route("/contact", methods=['GET', 'POST'])
 def contact():

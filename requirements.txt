@@ -4,3 +4,5 @@ Flask-Mail
 requests
 python-dotenv
 email_validator
+logging
+waitress

@@ -1,5 +1,8 @@
 FROM python:slim
 
+LABEL org.opencontainers.image.source https://github.com/feloeht/club-musique-esiee
+LABEL org.opencontainers.image.description 2022 Release Candidate - Club Musique ESIEE Paris
+
 COPY . /app
 WORKDIR /app
 
