@@ -2,12 +2,11 @@
 
 Site web et application de réservation du studio du Club Musique de l'ESIEE Paris.
 
-## TODO
+## TODO 2022
 - [X] Update python and base app
 - [x] Review and harden flask app
 - [X] Update web app (jquery, bootstrap...)
 - [x] Minors CSS fix
-- [] Test SMTP and Docker build with env
 
 ## Prérequis
 ### SMTP
@@ -18,7 +17,18 @@ Il est nécéssaire de disposer d'un compte Google afin de générer les clés d
 
 ## Installation
 ### Env
-Remplir les variables d'environnement à l'aide des informations demandées
+
+```sh
+MAIL_SERVER=YOUR_SERVER
+MAIL_PORT=YOUR_PORT
+MAIL_USE_SSL=True/False
+MAIL_USE_TLS=True/False
+MAIL_DEFAULT_SENDER=YOUR_USERNAME
+MAIL_RECIPIENT=YOUR_RECIPIENT
+RECAPTCHA_USE_SSL=True/False
+RECAPTCHA_PUBLIC_KEY=X
+RECAPTCHA_PRIVATE_KEY=X
+```
 
 ### Docker
 Lancer le container Docker sur le serveur cible.
