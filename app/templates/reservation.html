@@ -1,6 +1,6 @@
 {% include "header.html" %}
 
-	<body class="d-flex h-100 text-center text-white bg-dark">
+	<body class="d-flex min-vh-100 text-center text-white bg-dark">
 		<div class="container d-flex p-3 mx-auto flex-column">
 			<header class="mb-auto">
 				<div>
@@ -13,12 +13,12 @@
 				</nav>
 				</div>
 			</header>
-			<main class="px-3">
+			<main class="pt-4">
 				<h1>Réservation du studio</h1>
-				<p class="lead">Tu es cotisant et tu souhaites réserver le studio ? C'est par ici !</p>
+				<p class="lead">Tu es cotisant et tu souhaites réserver le studio ?</p>
 				<p class="lead">Commence par vérifier que le studio soit bien disponible sur le <a class="link-light" href="/planning">Planning</a> avant de demander une réservation.</p>
 			</main>
-			<div class="container w-50 pt-4">
+			<div class="container w-50 pb-4 pt-4">
 				{% if error %}
 					<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
 						<symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">

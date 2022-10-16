@@ -6,8 +6,8 @@ Site web et application de réservation du studio du Club Musique de l'ESIEE Par
 - [X] Update python and base app
 - [x] Review and harden flask app
 - [X] Update web app (jquery, bootstrap...)
+- [x] Minors CSS fix
 - [] Test SMTP and Docker build with env
-- [] Minors CSS fix
 
 ## Prérequis
 ### SMTP
