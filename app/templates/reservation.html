@@ -18,8 +18,10 @@
 				<p class="lead m-0">Tu es cotisant, tu as passé la formation studio et tu souhaites le réserver ?</p>
 				<p class="lead">Si tu n'as pas encore ta formation studio, contact nous !</p>
 				<p class="lead">Commence par vérifier que le studio soit bien disponible sur le <a class="link-light" href="/planning">Planning</a> avant de demander une réservation.</p>
+				<p class="lead m-0">Pour rappel, il n'est possible de réserver le studio qu'entre 17h et 23h en semaine, et entre 8h et 15h le samedi.</p>
+				<p class="lead">Attention ! Une fois ta demande envoyée, il faudra attendre la confirmation du bureau afin de pouvoir bénéficier du studio. Les demandes ne sont pas automatiquement validées.</p>
 			</main>
-			<div class="container w-50 pb-4 pt-4">
+			<div class="container w-75 pb-4 pt-4">
 				{% if error %}
 					<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
 						<symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
@@ -36,7 +38,7 @@
 					</svg>
 					<div class="alert alert-success d-flex align-items-center" role="alert">
 						<svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:"><use xlink:href="#info-fill"/></svg>
-						<div>Ta demande de réservation a bien été enregistrée, on te répond au plus vite !</div>
+						<div>Ta demande de réservation a bien été enregistrée, elle est en attente de validation, on te répond au plus vite !</div>
 					</div>
 				{% else %}
 				<form class="row g-3" action="{{ url_for('reservation') }}" method="post">
@@ -60,6 +62,9 @@
 					<div class="col-md-6">
 						<label for="end" class="form-label">Heure de fin</label>
 						{{ form.heurefin(id="heurefin", class="form-control") }}
+					</div>
+					<div class="col-12">
+						{{ form.motif(placeholder="Motif de la demande, répétition, cours...", rows="1", class="form-control") }}
 					</div>
 					<div class="col-12">
 						{{ form.commentaire(placeholder="Message, commentaire, demande...", rows="2", class="form-control") }}

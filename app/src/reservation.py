@@ -12,6 +12,7 @@ class ResaForm(FlaskForm):
     heuredebut = TimeField(validators = [validators.InputRequired()])
     heurefin = TimeField(validators = [validators.InputRequired()])
     nbpersonnes = SelectField(choices=NBPERSONNES, validators = [validators.InputRequired()])
+    motif = TextAreaField()
     commentaire = TextAreaField()
     recaptcha = RecaptchaField()
     envoyer = SubmitField()

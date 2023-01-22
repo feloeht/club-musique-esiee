@@ -37,8 +37,10 @@ def contact():
             return render_template('contact.html', contact=contact, error=error)
 
         else:
-            msg = Message("MESSAGE DE {}".format(contact.nom.data), recipients=[os.environ.get('MAIL_RECIPIENT')])
-            msg.body = "Nom : {} \nMail : {} \nMessage : {}".format(contact.nom.data, contact.email.data, contact.message.data)
+            msg = Message("Message de contact de {}".format(contact.nom.data), recipients=[os.environ.get('MAIL_RECIPIENT')])
+            msg.body = "Nom : {}\n \
+                        Mail : {}\n \
+                        Message : {}".format(contact.nom.data, contact.email.data, contact.message.data)
 
             try:
                 mail.send(msg)
@@ -85,14 +87,15 @@ def reservation():
             return render_template('reservation.html', form=form, error=error)
 
         else:
-            msg = Message("DEMANDE RESA DE {}".format(form.nom.data), recipients=[os.environ.get('MAIL_RECIPIENT')])
-            msg.body =  "Nom : {} \n " \
-                        "Mail : {} \n " \
-                        "Date : {} \n " \
-                        "Heure de début : {} \n " \
-                        "Heure de fin : {} \n " \
-                        "Nombre de personnes : {}\n " \
-                        "Commentaire : {}".format(form.nom.data, form.email.data, form.date.data, form.heuredebut.data, form.heurefin.data, form.nbpersonnes.data, form.commentaire.data)
+            msg = Message("Demande de réservation de {}".format(form.nom.data), recipients=[os.environ.get('MAIL_RECIPIENT')])
+            msg.body =  "Nom : {}\n" \
+                        "Mail : {}\n" \
+                        "Date : {}\n" \
+                        "Heure de début : {}\n" \
+                        "Heure de fin : {}\n" \
+                        "Nombre de personnes : {}\n" \
+                        "Motif de la demande : {}\n" \
+                        "Commentaire : {}".format(form.nom.data, form.email.data, form.date.data, form.heuredebut.data, form.heurefin.data, form.nbpersonnes.data, form.motif.data, form.commentaire.data)
 
             try:
                 mail.send(msg)
