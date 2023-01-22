@@ -1,0 +1,57 @@
+{% include "header.html" %}
+	<body class="is-preload">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<header id="header">
+					{% include "nav.html" %}
+				</header>
+				
+			<!-- Main -->
+				<section id="main" class="container medium">
+					<header>
+						<h2>Nous Contacter</h2>
+						<p>Des questions ? Des suggestions ? C'est par ici !</p>
+					</header>
+					{% if error %}
+						<div style="color: red">{{ error }}</div>
+					{% endif %}
+					{% if success %}
+						<p style="color: green">Votre message a bien été pris en compte.</p>
+						<p style="color: green"> Vous recevrez une réponse par mail bientot !</p>
+					{% else %}
+					<div class="box">
+						<form method="post" action="#">
+						{{ contact.csrf_token }}
+							<div class="row gtr-50 gtr-uniform">
+								<div class="col-6 col-12-mobilep">
+									{{ contact.nom(placeholder="Nom, Prénom *") }}
+									{% for message in contact.nom.errors %}
+										<div style="color: red">{{ error }}</div>
+									{% endfor %}
+								</div>
+								<div class="col-6 col-12-mobilep">
+									{{ contact.email(placeholder="Email *") }}
+									{% for message in contact.email.errors %}
+										<div style="color: red">{{ error }}</div>
+									{% endfor %}
+								</div>
+								<div class="col-12">
+									{{ contact.message(placeholder="Message, commentaire, demande...", rows="4") }}
+								</div>
+								<div class="col-12">
+									<ul class="actions special">
+										<li>{{ contact.recaptcha }}</li>
+									</ul>
+								</div>
+								<div class="col-12">
+									<ul class="actions special">
+										<li>{{ contact.envoyer(value="Envoyer") }}</li>
+									</ul>
+								</div>
+							</div>
+						</form>
+						{% endif %}
+					</div>
+				</section>
+{% include "footer.html" %}

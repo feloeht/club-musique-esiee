@@ -1,0 +1,86 @@
+{% include "header.html" %}
+	<body class="is-preload">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<header id="header">
+					{% include "nav.html" %}
+				</header>
+				
+			<!-- Main -->
+				<section id="main" class="container">
+					<header>
+						<h2>Réservation</h2>
+						<p>Tu es membre et désires réserver le studio ? C'est par ici !</p>
+					</header>
+					<div class="box">
+						<h3>Planning du Studio</h3>
+						<p>Vérifies que le studio soit bien disponible avant de le réserver. Le studio est accessible uniquement en dehors des heures de cours.</p>
+						<div class="responsiveCal">
+							<iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=2&amp;bgcolor=%23616161&amp;ctz=Europe%2FParis&amp;src=Y2x1Yi5tdXNpcXVlQGVkdS5lc2llZS5mcg&amp;color=%23F6BF26&amp;showTz=0&amp;mode=WEEK&amp;title=Club%20MUSIQUE&amp;showTitle=0&amp;showDate=1&amp;showPrint=0&amp;showTabs=1&amp;showCalendars=0" style="border-width:0" frameborder="0" scrolling="no"></iframe>
+						</div>
+						<div class="row">
+							<div class="row-6 row-12-mobilep">
+								<h3>Demande de réservation</h3>
+								<p>Renseigne ici tous les éléments demandés et attends la confirmation de ta réservation par mail !</p>
+								{% if error %}
+									<div style="color: red">{{ error }}</div>
+								{% endif %}
+								{% if success %}
+									<p style="color: green">Votre demande de reservation a bien été prise en compte.</p>
+									<p style="color: green"> Vous recevrez une réponse par mail bientot !</p>
+								{% else %}
+									<form action="{{ url_for('reservation') }}" method="post">
+										{{ form.csrf_token }}
+										<div class="row gtr-50 gtr-uniform">
+											<div class="col-6 col-12-mobilep">
+												{{ form.nom(placeholder="Nom *") }}
+												{% for message in form.nom.errors %}
+													<div class="flash">{{ message }}</div>
+												{% endfor %}
+											</div>
+											<div class="col-6 col-12-mobilep">
+												{{ form.email(placeholder="Email ESIEE *") }}
+												{% for message in form.email.errors %}
+													<div class="flash">{{ message }}</div>
+												{% endfor %}
+											</div>
+											<div class="col-6 col-12-mobilep">
+												{{ form.date }}
+											</div>
+											<div class="col-6 col-12-mobilep">
+												{{ form.nbpersonnes }}
+											</div>
+											<div class="col-6 col-12-mobilep">
+												{{ form.heuredebut }}
+											</div>
+											<div class="col-6 col-12-mobilep">
+												{{ form.mindebut }}
+											</div>
+											<div class="col-6 col-12-mobilep">
+												{{ form.heurefin }}
+											</div>
+											<div class="col-6 col-12-mobilep">
+												{{ form.minfin }}
+											</div>
+											<div class="col-12">
+												{{ form.commentaire(placeholder="Message, commentaire, demande...", rows="2") }}
+											</div>
+											<div class="col-12">
+												<ul class="actions special">
+													<li>{{ form.recaptcha }}</li>
+												</ul>
+											</div>
+											<div class="col-12">
+												<ul class="actions special">
+													<li>{{ form.envoyer(value="Envoyer") }}</li>
+												</ul>
+											</div>
+										</div>
+									</form>
+								{% endif %}
+							</div>
+						</div>
+					</div>
+				</section>
+{% include "footer.html" %}

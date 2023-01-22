@@ -1,0 +1,6 @@
+Flask
+Flask-WTF
+Flask-Mail
+requests
+python-dotenv
+email_validator
